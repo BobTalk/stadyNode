@@ -1,8 +1,8 @@
-// conf/db.js
+// config/db.js
 // MySQL数据库联接配置
-var mysql = require("mysql");
-var db = {};
-var mysqlConfig = {
+let mysql = require("mysql");
+let db = {};
+let mysqlConfig = {
     host: 'localhost',
     user: 'root',
     password: '123456',
@@ -10,14 +10,14 @@ var mysqlConfig = {
     port: 3306
 };
 db.query = function sqlback(sqlCall, callback) {
-    var connection = mysql.createConnection(mysqlConfig);
+    let connection = mysql.createConnection(mysqlConfig);
     connection.connect((err) => {
         if (err) {
             console.log(err);
             return
         }
     });
-    var sql = sqlCall;
+    let sql = sqlCall;
     if (!sql) {
         return
     }
@@ -36,5 +36,5 @@ db.query = function sqlback(sqlCall, callback) {
             console.log("链接关闭");
         }
     })
-}
+};
 module.exports = db;
